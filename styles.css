@@ -1,0 +1,852 @@
+/* ==================== GENERAL STYLES ==================== */
+:root {
+    --primary-color: #1a472a;
+    --secondary-color: #2d5a3d;
+    --accent-color: #d4af37;
+    --light-bg: #f8f9fa;
+    --dark-text: #1a1a1a;
+    --border-radius: 15px;
+    --primary: #1a472a;
+    --accent: #d4af37;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-text);
+    overflow-x: hidden;
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--accent-color) !important;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.logo {
+    font-family: 'Arial', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.nav-link {
+    color: #fff !important;
+    margin: 0 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="makkah" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse"><path d="M100,50 L120,100 L80,100 Z" fill="rgba(212,175,55,0.1)"/><circle cx="100" cy="120" r="30" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="2"/></pattern></defs><rect width="1200" height="600" fill="url(%23makkah)"/></svg>');
+    background-size: 300px 300px;
+    animation: backgroundShift 20s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes backgroundShift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 300px 300px;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(45, 90, 61, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* ==================== SEARCH BAR ==================== */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--accent-color);
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    background: white;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    color: var(--primary-color);
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+/* ==================== STAT CARDS ==================== */
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent-color);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* ==================== INFO SECTION ==================== */
+.info-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.info-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--primary-color);
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.info-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-header i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.info-header h5 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.info-body {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* ==================== TIME DISPLAY ==================== */
+.time-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.time-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.date-text {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* ==================== QIBLA COMPASS ==================== */
+.qibla-compass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.compass-circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compass-needle {
+    position: absolute;
+    width: 4px;
+    height: 60px;
+    background: linear-gradient(to top, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+    transform-origin: center 60px;
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.compass-label {
+    position: absolute;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.compass-degree {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* ==================== SECTION TITLES ==================== */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    border-radius: 2px;
+}
+
+/* ==================== JADWAL SECTION ==================== */
+.jadwal-section {
+    background: white;
+}
+
+.jadwal-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.jadwal-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    transform: translateY(-5px);
+}
+
+.jadwal-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.jadwal-time {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    font-family: 'Courier New', monospace;
+}
+
+.jadwal-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* ==================== KAJIAN SECTION ==================== */
+.kajian-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.kajian-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    border-left: 5px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.kajian-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.kajian-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.kajian-info {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.kajian-info i {
+    color: var(--accent-color);
+    width: 20px;
+}
+
+/* ==================== SURAH SECTION ==================== */
+.surah-section {
+    background: white;
+}
+
+.surah-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.surah-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.surah-card:hover::before {
+    left: 100%;
+}
+
+.surah-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    transform: translateY(-10px);
+}
+
+.surah-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.surah-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.surah-arabic {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.surah-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.surah-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ==================== TOOLS SECTION ==================== */
+.tools-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.tool-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tool-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-15px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.tool-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover .tool-icon {
+    color: var(--accent-color);
+    transform: scale(1.2) rotate(10deg);
+}
+
+.tool-card h5 {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.tool-card p {
+    color: #666;
+    margin: 0;
+}
+
+/* ==================== MODAL ==================== */
+.modal-content {
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    border: none;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.ayat-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.ayat-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.ayat-number {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ayat-arabic {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    line-height: 2;
+    text-align: right;
+    direction: rtl;
+}
+
+.ayat-translation {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.ayat-tafsir {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-top: 3px solid var(--accent-color);
+}
+
+.footer h5 {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer a {
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--accent-color) !important;
+    text-decoration: underline !important;
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 80vh;
+    }
+
+    .display-3 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .time-text {
+        font-size: 2rem;
+    }
+
+    .search-input,
+    .btn-primary {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    .surah-card {
+        padding: 15px;
+    }
+
+    .tool-card {
+        padding: 30px 15px;
+    }
+
+    .tool-icon {
+        font-size: 2.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-3 {
+        font-size: 1.5rem;
+    }
+
+    .lead {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .stat-card {
+        padding: 20px 15px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .time-text {
+        font-size: 1.8rem;
+    }
+
+    .compass-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .search-container {
+        max-width: 100%;
+    }
+
+    .input-group-lg > .form-control,
+    .input-group-lg > .btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==================== SCROLL ANIMATIONS ==================== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================== LOADING STATE ==================== */
+.spinner-border {
+    color: var(--primary-color) !important;
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
